@@ -65,7 +65,7 @@ export default function RehabilitasiPage() {
             Tim CV. Hijauin Bumi Agritech siap membantu mulai dari survei lapangan hingga penyediaan bibit bersertifikat.
           </p>
           <a 
-            href="https://wa.me/628xxxxxxxxxx?text=Halo%20CV.%20Hijauin%20Bumi%2C%20saya%20ingin%20konsultasi%20jasa%20rehabilitasi"
+            href="https://wa.me/6285390910860?text=Halo%20CV.%20Hijauin%20Bumi%2C%20saya%20ingin%20konsultasi%20jasa%20rehabilitasi"
             className="inline-block bg-green-600 text-white font-bold px-10 py-4 rounded-full hover:bg-green-700 transition shadow-lg"
           >
             Hubungi Tenaga Ahli Kami

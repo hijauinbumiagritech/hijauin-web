@@ -23,12 +23,10 @@ export default function AdminPage() {
   // --- LOGIKA PERBAIKAN LINK DRIVE (Agar Gambar Muncul) ---
   const perbaikiLinkDrive = (url) => {
     if (!url) return "";
-    // Menangkap ID file dari link Drive Bapak
     const match = url.match(/\/d\/([^/]+)/) || url.match(/id=([^&]+)/);
     if (match && match[1]) {
       const fileId = match[1];
-      // Format link ini lebih stabil untuk menampilkan gambar langsung
-      return `https://lh3.googleusercontent.com/d/${fileId}`;
+      return `http://googleusercontent.com/profile/picture/3{fileId}`;
     }
     return url;
   };
@@ -44,7 +42,6 @@ export default function AdminPage() {
     return Number(teks.toString().replace(/\./g, ""));
   };
 
-  // --- FUNGSI EDIT HARGA (Tanpa Mengubah Stok) ---
   const handleEditHarga = async (id, nama, hargaLama) => {
     const inputBaru = prompt(`Edit Harga untuk ${nama}:`, hargaLama.toLocaleString('id-ID'));
     if (inputBaru === null) return; 
@@ -93,7 +90,7 @@ export default function AdminPage() {
     try {
       await addDoc(collection(db, "produk"), {
         ...form,
-        imageUrl: perbaikiLinkDrive(form.imageUrl), // Otomatis konversi link Drive saat simpan
+        imageUrl: perbaikiLinkDrive(form.imageUrl),
         harga: bersihkanAngka(form.harga),
         jumlah: bersihkanAngka(form.jumlah),
         waktu: serverTimestamp()
@@ -147,13 +144,12 @@ export default function AdminPage() {
                 <p className="text-green-700 font-bold uppercase text-xs tracking-[0.3em]">CV. Hijauin Bumi Agritech</p>
             </div>
             <div className="flex gap-3">
-               <Link href="/admin/converter" className="bg-orange-500 px-4 py-2 rounded-xl shadow-lg text-xs font-bold text-white hover:bg-orange-600 transition">Alat Converter Drive</Link>
+               {/* Tombol Converter sudah dihapus sesuai permintaan Bapak */}
                <Link href="/" className="bg-green-700 px-6 py-2 rounded-xl shadow-lg text-sm font-bold text-white hover:bg-green-800 transition">Beranda</Link>
             </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            
             <div className="lg:col-span-1 bg-white rounded-[30px] shadow-xl p-6 border border-green-100 h-fit">
                 <h2 className="text-lg font-bold mb-6 text-green-900 border-b pb-3">Daftar Bibit Baru</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -297,7 +293,6 @@ export default function AdminPage() {
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
       </div>
